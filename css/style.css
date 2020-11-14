@@ -1,0 +1,26 @@
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame {
+    height: 99vh;
+    width: 40vw;
+    background-color: #ECE7D7;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+        "screen screen screen screen"
+        "plus minus multiply divide"
+        "seven eight nine equal"
+        "four five six equal"
+        "one two three equal"
+        "zero zero zero equal";
+    padding: 1vh;
+}
