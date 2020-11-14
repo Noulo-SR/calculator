@@ -1,3 +1,7 @@
+:root {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 body {
     height: 100vh;
     margin: 0;
@@ -11,7 +15,7 @@ body {
 .frame {
     height: 99vh;
     width: 40vw;
-    background-color: #ECE7D7;
+    background-color: #C3C3C3;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -22,5 +26,85 @@ body {
         "four five six equal"
         "one two three equal"
         "zero zero zero equal";
-    padding: 1vh;
+        /* "screen screen screen screen"
+        "button button button button"
+        "button button button equal"
+        "button button button equal"
+        "button button button equal"
+        "zero zero zero equal"; */
+    box-shadow: 5px 5px #535353;
+
+}
+
+.button {
+    grid-area: button;
+    margin: 2vh;
+    box-shadow: 3.5px 3.5px #535353;
+    color: blue;
+    background-color: #B3B3B3;
+    color: #535353;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+#screen {
+    grid-area: screen;
+    background-color: #090C53;
+    margin: 1.8vh;
+    padding: 0;
+    /* border: 5px solid black; */
+    box-shadow: 2.5px 2.5px #535353;
+    color: #F3F3F3;
+    justify-content: flex-end;
+    align-items: center;
+    /* font-weight: 900; */
+    font-size: 100px;
+    text-transform: scale(1, 1.5);
+    font-stretch: condensed;
+    display: flex;
+}
+#plus {
+    grid-area: plus;
+}
+#minus {
+    grid-area: minus;
+}
+#multiply {
+    grid-area: multiply;
+}
+#divide {
+    grid-area: divide;
+}
+#nine {
+    grid-area: nine;
+}
+#eight {
+    grid-area: eight;
+}
+#seven {
+    grid-area: seven;
+}
+#six {
+    grid-area: six;
+}
+#five {
+    grid-area: five;
+}
+#four {
+    grid-area: four;
+}
+#three {
+    grid-area: three;
+}
+#two {
+    grid-area: two;
+}
+#one {
+    grid-area: one;
+}
+#equal {
+    grid-area: equal;
+}
+#zero {
+    grid-area: zero;
 }
