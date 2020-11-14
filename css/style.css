@@ -6,7 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: brown;
+    background-color: #7cc3d4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ body {
 .frame {
     height: 99vh;
     width: 40vw;
-    background-color: #C3C3C3;
+    background-color: #D3D3D3;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -39,12 +39,13 @@ body {
 .button {
     grid-area: button;
     margin: 2vh;
-    box-shadow: 3.5px 3.5px #535353;
+    box-shadow: 2px 2px #535353;
     color: blue;
-    background-color: #B3B3B3;
+    background-color: #C3C3C3;
     color: #535353;
     font-weight: bolder;
     font-size: 40px;
+    border-radius: 3%;
 }
 
 #screen {
@@ -59,10 +60,18 @@ body {
     align-items: center;
     /* font-weight: 900; */
     font-size: 100px;
-    text-transform: scale(1, 1.5);
+    
     font-stretch: condensed;
     display: flex;
+    padding-right: 2vh;
+    border-radius: 2%;
 }
+
+
+.screen div {
+    font-stretch: ultra-condensed;
+}
+
 #plus {
     grid-area: plus;
 }
