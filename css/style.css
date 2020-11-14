@@ -25,7 +25,7 @@ body {
         "seven eight nine equal"
         "four five six equal"
         "one two three equal"
-        "zero zero zero equal";
+        "clear zero zero equal";
         /* "screen screen screen screen"
         "button button button button"
         "button button button equal"
@@ -36,7 +36,7 @@ body {
 
 }
 
-.button {
+.button, .accion, .operator {
     grid-area: button;
     margin: 2vh;
     box-shadow: 2px 2px #535353;
@@ -116,4 +116,7 @@ body {
 }
 #zero {
     grid-area: zero;
+}
+#clear {
+    grid-area: clear;
 }
