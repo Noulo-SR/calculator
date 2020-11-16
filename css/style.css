@@ -25,13 +25,7 @@ body {
         "seven eight nine equal"
         "four five six equal"
         "one two three equal"
-        "clear zero zero equal";
-        /* "screen screen screen screen"
-        "button button button button"
-        "button button button equal"
-        "button button button equal"
-        "button button button equal"
-        "zero zero zero equal"; */
+        "clear zero decimal equal";
     box-shadow: 5px 5px #535353;
 
 }
@@ -119,4 +113,7 @@ body {
 }
 #clear {
     grid-area: clear;
+}
+#decimal {
+    grid-area: decimal;
 }
