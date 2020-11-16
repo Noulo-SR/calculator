@@ -22,7 +22,7 @@ body {
     grid-template-areas: 
         "screen screen screen screen"
         "plus minus multiply divide"
-        "seven eight nine equal"
+        "seven eight nine backspace"
         "four five six equal"
         "one two three equal"
         "clear zero decimal equal";
@@ -116,4 +116,7 @@ body {
 }
 #decimal {
     grid-area: decimal;
+}
+#backspace {
+    grid-area: backspace;
 }
