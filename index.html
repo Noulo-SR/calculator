@@ -52,13 +52,43 @@
       }
     }
 
+    let values = { //reference values object to keep track of the operations
+            opCall: 0,
+            currentOp: "",
+            n: "",
+            nCall: false,
+            m: "",
+            mCall: false
+        };
+
     let buttons = document.querySelectorAll('.button');
     let calculate = () => {   
+      if (values.opCall === 0) {
+          values.n += event.target.textContent;
+          display.textContent = `${values.n}`
+          values.nCall = true;
+      } else {
+          values.m += event.target.textContent;
+          display.textContent = `${values.m}`
+          values.mCall = true;
       }
+    }
     buttons.forEach(button => button.addEventListener('click', calculate));
 
     let operators = document.querySelectorAll('.operator');
     let callOp = () => {
+      if (values.nCall === true) {
+        if (values.mCall === true) {
+            if (values.equalCall === false) {
+              values.n += operate(values.currentOp, parseInt(values.n), parseInt(values.m));
+              display.textContent = `${values.n}`;
+            }
+        }
+        values.currentOp = event.target.textContent;
+        values.opCall++;
+        values.m = "";
+        values.equalCall = false;
+      }
     }
     operators.forEach(operator => operator.addEventListener('click', callOp));
     
