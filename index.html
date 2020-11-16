@@ -91,6 +91,21 @@
       }
     }
     operators.forEach(operator => operator.addEventListener('click', callOp));
+
+    let equal = document.querySelector('#equal');
+
+    equal.onclick = () => {  //event listener to change the display value to the total value of our operation
+        if ((values.opCall === 0) && (values.nCall === true))  {
+            display.textContent = `${values.n}`;
+        } else if ((values.m !== '') && (values.equalCall === false)) {
+            values.n = operate(values.currentOp, parseInt(values.n), parseInt(values.m));
+            display.textContent = `${values.n}`;
+        } else {
+            display.textContent = `${values.n}`;
+        }
+        values.equalCall = true;
+      };
+
     
   </script>
 </body>
