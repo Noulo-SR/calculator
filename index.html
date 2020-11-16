@@ -35,67 +35,6 @@
 
     let display = document.querySelector('.screen');
 
-    let values = { //reference values object to keep track of the operations
-            opCall: 0,
-            currentOp: "",
-            n: "",
-            nCall: false,
-            m: "",
-            mCall: false,
-            equalCall: false,
-            answer: ""
-        };
-
-    function reset() {
-        values.opCall = 0,
-        values.currentOp = "";
-        values.n = "";
-        values.nCall = false;
-        values.m = "";
-        values.mCall = false;
-        values.equalCall = false;
-        values.answer = "";
-        display.textContent = '';
-        };
-        
-    
-    reset();
-
-    let buttons = document.querySelectorAll('.button');
-    let calculate = () => {   
-      if (values.equalCall === true) {
-          reset();
-      }
-
-      if (values.opCall === 0) {
-          values.n += event.target.textContent;
-          display.textContent = `${values.n}`
-          values.nCall = true;
-      } else {
-          values.m += event.target.textContent;
-          display.textContent = `${values.m}`
-          values.mCall = true;
-      }
-    }
-    buttons.forEach(button => button.addEventListener('click', calculate));
-
-    let operators = document.querySelectorAll('.operator');
-    let callOp = () => {
-      if (values.nCall === true) {
-        if (values.mCall === true) {
-            if (values.equalCall === false) {
-              values.n += operate(values.currentOp, parseInt(values.n), parseInt(values.m));
-              display.textContent = `${values.n}`;
-            }
-        }
-        values.currentOp = event.target.textContent;
-        values.opCall++;
-        values.m = "";
-        values.equalCall = false;
-      }
-    }
-    operators.forEach(operator => operator.addEventListener('click', callOp));
-    
     let operate = (op, n, m) => { //function to call any of the 4 math operation funtions
       switch(op) {
         case "+":
@@ -113,171 +52,17 @@
       }
     }
 
-    let equal = document.querySelector('#equal');
-
-    equal.onclick = () => {  //event listener to change the display value to the total value of our operation
-        if ((values.opCall === 0) && (values.nCall === true))  {
-            display.textContent = `${values.n}`;
-        } else if ((values.m !== '') && (values.equalCall === false)) {
-            values.n = operate(values.currentOp, parseInt(values.n), parseInt(values.m));
-            display.textContent = `${values.n}`;
-        } else {
-            display.textContent = `${values.n}`;
-        }
-        values.equalCall = true;
-      };
-
-      let clear = document.querySelector('#clear');
-      clear.onclick = () => {
-        values = { //reference values object to keep track of the operations
-            opCall: 0,
-            currentOp: "",
-            n: "",
-            nCall: false,
-            m: "",
-            mCall: false,
-            equalCall: false,
-            answer: ""
-        };
-        display.textContent = '';
-    }
-
-  </script>
-</body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>CALCULATOR</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <meta charset="UTF-8"/>
-</head>
-<body>
-    <div class='frame'>
-        <div class='screen' id='screen'>
-          <div></div>
-        </div>
-        <button class='operator' id='plus'>+</button>
-        <button class='operator' id='minus'>-</button>
-        <button class='operator' id='multiply'>*</button>
-        <button class='operator' id='divide'>/</button>
-        <button class='button' id='nine'>9</button>
-        <button class='button' id='eight'>8</button>
-        <button class='button' id='seven'>7</button>
-        <button class='button' id='six'>6</button>
-        <button class='button' id='five'>5</button>
-        <button class='button' id='four'>4</button>
-        <button class='button' id='three'>3</button>
-        <button class='button' id='two'>2</button>
-        <button class='button' id='one'>1</button>
-        <button class='button' id='zero'>0</button>
-        <button class='accion' id='equal'>=</button>
-        <button class='accion' id='clear'>AC</button>
-    </div>
-  <script>
-    let add = (n, m) => n + m; //basic addition function
-    let substract = (n, m) => n - m; //basic substraction function
-    let multiply = (n, m) =>  n * m; //basic multiplication function
-    let divide = (n, m) => m !== 0 ? n/m : "ERROR"; //basic division function
-
-function clearAll() {
-      let total = { //object to store the value of our operations
-      value: 0
-      
-    }
-    let values = { //reference values object to keep track of the operations
-      opCalls: 0,
-      currentOp: "",
-      n: "",
-      nCalls: 0,
-      m: "",
-      equalCalls: 0};
-
     let buttons = document.querySelectorAll('.button');
-    let calculate = () => {
-      if (values.equalCalls === 2) {
-        values.n = "";
-        values.opCalls = 0;
+    let calculate = () => {   
       }
-      
-      if (values.opCalls === 0) {
-        values.n += event.target.textContent;
-        display.textContent = `${values.n}`;
-        console.log('n',values.n);
-        values.nCalls++
-      } else {
-        values.m += event.target.textContent;
-        display.textContent = `${values.m}`;
-        console.log('m',values.m);
-        values.equalCalls = 0;
-      }
-    }
     buttons.forEach(button => button.addEventListener('click', calculate));
 
     let operators = document.querySelectorAll('.operator');
     let callOp = () => {
-      if (values.opCalls === 0) {
-        values.currentOp = event.target.textContent;
-        values.opCalls++;
-        console.log(values.opCalls);
-      } else if (values.equalCalls===0){
-        total.value = 0;
-        values.equalCalls = 1;
-        values.n = operate(values.currentOp, parseInt(values.n), parseInt(values.m));
-        values.currentOp = event.target.textContent;
-        display.textContent = `${total.value}`
-        values.m = "";
-       // console.log(values.opCalls);
-      }
     }
     operators.forEach(operator => operator.addEventListener('click', callOp));
     
-    let operate = (op, n, m) => { //function to call any of the 4 math operation funtions
-      switch(op) {
-        case "+":
-          total.value += add(n, m);
-          break;
-        case "-":
-          total.value += substract(n, m);
-          break;
-        case "*":
-          total.value += multiply(n, m);
-          break;
-        case "/":
-          total.value += divide(n, m); 
-          break;
-      }
-      return total.value;
-    }
-   // operate('+', 5, 6);
-
-    let display = document.querySelector('.screen');
-    display.textContent = '';
-    let equal = document.querySelector('#equal');
-    equal.onclick = () => {  //event listener to change the display value to the total value of our operation
-        if (values.equalCalls === 0) {
-        //display.textContent = `${operate(values.currentOp, parseInt(values.n), parseInt(values.m))}`;
-        callOp();
-        values.m = "";
-        console.log(total.value);
-        values.equalCalls = 2;
-        }
-      };
-      let clear = document.querySelector('#clear');
-      clear.onclick = () => {
-        values.opCalls = 0;
-        values.n = "";
-        values.nCalls = 0;
-        values.m = "";
-        total.value = 0;
-        display.textContent = '';
-        values.equalCalls = 0;
-      };
-      
-  }
-  clearAll();
-
   </script>
 </body>
-</html> -->
+</html>
+
