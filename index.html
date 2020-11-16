@@ -23,6 +23,7 @@
         <button class='button' id='three'>3</button>
         <button class='button' id='two'>2</button>
         <button class='button' id='one'>1</button>
+        <button class='button' id='decimal'>.</button>
         <button class='button' id='zero'>0</button>
         <button class='accion' id='equal'>=</button>
         <button class='accion' id='clear'>AC</button>
@@ -59,7 +60,8 @@
             nCall: false,
             m: "",
             mCall: false,
-            equalCall: false
+            equalCall: false,
+            floatCount: false
         };
 
     function reset() {
@@ -70,7 +72,7 @@
       values.m = "";
       values.mCall = false;
       values.equalCall = false;
-      values.answer = "";
+      values.floatCount = false;
       display.textContent = '';
     };
     reset();
@@ -80,15 +82,32 @@
       if (values.equalCall === true) {
           reset();
       }
-        
       if (values.opCall === 0) {
+        if (event.target.textContent !== '.') {
           values.n += event.target.textContent;
           display.textContent = `${values.n}`
           values.nCall = true;
+        } else if ((values.floatCount === false)) {
+          if (values.n === '') {
+              values.n += '0'
+            }
+          values.n += event.target.textContent;
+          display.textContent = `${values.n}`
+          values.floatCount = true;
+        }
       } else {
-          values.m += event.target.textContent;
-          display.textContent = `${values.m}`
-          values.mCall = true;
+          if (event.target.textContent !== '.') {  
+            values.m += event.target.textContent;
+            display.textContent = `${values.m}`
+            values.mCall = true;
+          } else if ((values.floatCount === false)) {
+            if (values.m === '') {
+              values.m += '0'
+            }
+            values.m += event.target.textContent;
+            display.textContent = `${values.m}`
+            values.floatCount = true;
+          }
       }
     }
     buttons.forEach(button => button.addEventListener('click', calculate));
@@ -98,7 +117,7 @@
       if (values.nCall === true) {
         if (values.mCall === true) {
             if (values.equalCall === false) {
-              values.n += operate(values.currentOp, parseInt(values.n), parseInt(values.m));
+              values.n += operate(values.currentOp, parseFloat(values.n), parseFloat(values.m));
               display.textContent = `${values.n}`;
             }
         }
@@ -106,6 +125,7 @@
         values.opCall++;
         values.m = "";
         values.equalCall = false;
+        values.floatCount = false;
       }
     }
     operators.forEach(operator => operator.addEventListener('click', callOp));
@@ -116,7 +136,7 @@
         if ((values.opCall === 0) && (values.nCall === true))  {
             display.textContent = `${values.n}`;
         } else if ((values.m !== '') && (values.equalCall === false)) {
-            values.n = operate(values.currentOp, parseInt(values.n), parseInt(values.m));
+            values.n = operate(values.currentOp, parseFloat(values.n), parseFloat(values.m));
             display.textContent = `${values.n}`;
         } else {
             display.textContent = `${values.n}`;
