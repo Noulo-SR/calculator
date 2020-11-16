@@ -6,15 +6,14 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #7cc3d4;
+    background-color:   #7cc3d4;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .frame {
-    height: 99vh;
-    width: 40vw;
+    height: 98vh;
+    width: 600px;
     background-color: #D3D3D3;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -26,20 +25,34 @@ body {
         "four five six equal"
         "one two three equal"
         "clear zero decimal equal";
-    box-shadow: 5px 5px #535353;
+    box-shadow: 6px 4px #313131;
+    border-radius: 2%;
+    border: 5px solid #535353;
 
 }
 
 .button, .accion, .operator {
+    all: unset;
     grid-area: button;
     margin: 2vh;
-    box-shadow: 2px 2px #535353;
+    box-shadow: 2.3px 2.3px #535353;
     color: blue;
     background-color: #C3C3C3;
     color: #535353;
     font-weight: bolder;
     font-size: 40px;
     border-radius: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #535353;
+}
+
+.button:active, .accion:active, .operator :active {
+    box-shadow: unset;
+    position: relative;
+    left: 2.3px;
+    top: 2.3px;
 }
 
 #screen {
@@ -47,23 +60,17 @@ body {
     background-color: #090C53;
     margin: 1.8vh;
     padding: 0;
-    /* border: 5px solid black; */
-    box-shadow: 2.5px 2.5px #535353;
-    color: #F3F3F3;
+    color: #8c93b9;
     justify-content: flex-end;
     align-items: center;
-    /* font-weight: 900; */
     font-size: 100px;
-    
     font-stretch: condensed;
     display: flex;
     padding-right: 2vh;
-    border-radius: 2%;
-}
-
-
-.screen div {
-    font-stretch: ultra-condensed;
+    border-radius: 1%;
+    min-height: 15vh;
+    border: 5px solid #535353;
+    box-shadow: 3px 3px #313131;
 }
 
 #plus {
