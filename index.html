@@ -62,8 +62,25 @@
             equalCall: false
         };
 
+    function reset() {
+      values.opCall = 0,
+      values.currentOp = "";
+      values.n = "";
+      values.nCall = false;
+      values.m = "";
+      values.mCall = false;
+      values.equalCall = false;
+      values.answer = "";
+      display.textContent = '';
+    };
+    reset();
+
     let buttons = document.querySelectorAll('.button');
-    let calculate = () => {   
+    let calculate = () => { 
+      if (values.equalCall === true) {
+          reset();
+      }
+        
       if (values.opCall === 0) {
           values.n += event.target.textContent;
           display.textContent = `${values.n}`
