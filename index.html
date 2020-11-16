@@ -84,7 +84,7 @@
           reset();
       }
       if (values.opCall === 0) {
-        if ((event.target.textContent === '<~') && (values.n !== '')) {
+        if ((event.target.textContent === '<¬') && (values.n !== '')) {
           let erase = [...values.n];
           erase.splice(erase.length-1, 1);
           values.n = erase.join('');
@@ -104,7 +104,7 @@
           }
         }
       } else {
-        if ((event.target.textContent === '<~') && (values.m !== '')) {
+        if ((event.target.textContent === '<¬') && (values.m !== '')) {
           let erase = [...values.m];
           erase.splice(erase.length-1, 1);
           values.m = erase.join('');
